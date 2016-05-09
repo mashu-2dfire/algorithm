@@ -1,5 +1,5 @@
 /**
-*ϣ������
+*希尔排序
 *
 */
 class Hill 
@@ -21,24 +21,25 @@ class Hill
 	}
 	public static void hill(int[] a)
 	{
-		int d=a.length;
+		int d=a.length;//初始化d的值
 		while(true)
 		{
 			d=d/2;
-			for(int x=0;x<d;x++)
+			for(int x=0;x<d;x++)//划分循环次数
 			{
-				for(int i=x+d;i<a.length;i=i+d)
+				//每一系列都进行：插入排序
+				for(int i=x+d;i<a.length;i=i+d)//从第二项开始，到结束
 				{
 					int j;
 					int temp=a[i];
-					for(j=i-d;j>=0&&a[j]>temp;j=j-d)
+					for(j=i-d;j>=0&&a[j]>temp;j=j-d)//符合条件后做调整
 					{
 						a[j+d]=a[j];
 					}
 					a[j+d]=temp;
 				}
 			}
-			if(d==1)
+			if(d==1)//当d为1时跳出循环
 				break;
 		}
 	}
